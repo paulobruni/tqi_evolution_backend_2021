@@ -1,0 +1,38 @@
+Docker criar banco------------------------------
+docker run --name tqi-avaliacao -d -p 5432:5432 -e POSTGRES_USER=postgres_user_tqi -e POSTGRES_PASSWORD=super_password -e POSTGRES_DB=tqi postgres
+
+Conectar no container (Modo interativo)------------------------------
+docker run -it --rm --net=host postgres /bin/bash
+
+Conectar no banco------------------------------
+psql -h localhost -U postgres_user_tqi tqi
+Senha: super_password
+
+Criar tabelas------------------------------
+CREATE TABLE cliente (
+  id	           bigserial NOT NULL,
+  nome             varchar(255),
+  e-mail           varchar(255),
+  cpf              varchar(20),
+  rg               varchar(20),
+  endereco         varchar(255),
+  renda            numeric(10,2),
+  senha            varchar(255)	
+);
+
+CREATE TABLE emprestimo (
+  id		   bigserial NOT NULL,
+  id_cliente       bigint,
+  valor            numeric(10,2),
+  parcelas         int,
+  data_pri_par	   date	
+);
+
+Consultar tabelas------------------------------
+\d cliente;
+\d emprestimo;
+
+=============================================================
+
+Autenticação via Token JWT (Baseado no conteúdo Expertos Tech)
+https://www.youtube.com/watch?v=WM8Ty4ITcFc
