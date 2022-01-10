@@ -28,6 +28,13 @@ docker run --name tqi-avaliacao -d -p 5432:5432 -e POSTGRES_USER=postgres_user_t
 docker run -it --rm --net=host postgres /bin/bash
 ```
 
+* Acesso
+
+```shell script
+docker exec -it tqi /bin/bash
+psql -h localhost -U postgres_user_tqi tqi
+```
+
 * Tabelas
 
 ```shell script
@@ -50,12 +57,7 @@ CREATE TABLE emprestimo (
   data_pri_par	   date	
 );
 ```
-* Acesso
 
-```shell script
-docker exec -it tqi /bin/bash
-psql -h localhost -U postgres_user_tqi tqi
-```
 ## Spring Boot
 
 * [https://start.spring.io/](https://start.spring.io/)
